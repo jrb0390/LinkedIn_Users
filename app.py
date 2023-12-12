@@ -71,25 +71,11 @@ if parent == "Yes":
 else:
     parent = 2
 
-marital_status = st.selectbox("Select Marital Status", 
-                              options= ["Married",
-                                        "Living with a partner",
-                                        "Divorced",
-                                        "Separated",
-                                        "Widowed",
-                                        "Never been married",])
+marital_status = st.radio("Select marital status?", ["Married", "Not Married"])
 if marital_status == "Married":
     marital_status = 1
-elif marital_status == "Living with a partner":
-    marital_status = 2
-elif marital_status == "Divorced":
-    marital_status = 3
-elif marital_status == "Separated":
-    marital_status = 4
-elif marital_status == "Widowed":
-    marital_status = 5
-elif marital_status == "Never been married":
-    marital_status = 6
+else:
+    marital_status = 0
 
 sex = st.radio("Select Gender", ["Male", "Female"])
 if sex == "Male":
