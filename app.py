@@ -119,7 +119,12 @@ s = pd.read_csv("social_media_usage.csv")
 
 
 s = pd.read_csv("social_media_usage.csv")
-# Create 'ss' dataframe with specified features
+# Create 'ss' dataframe with specified features\
+
+def clean_sm(x):
+    x = np.where(x == 1, 1, 0)
+    return x
+  
 ss = pd.DataFrame({
     "sm_li": clean_sm(s['web1h']),
     "income1": np.where(s['income'] > 9, np.nan, s['income']),
