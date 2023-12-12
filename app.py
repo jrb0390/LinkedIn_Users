@@ -133,8 +133,6 @@ ss = pd.DataFrame({
     "age1": np.where(s['age'] > 98, np.nan, s['age'])
 })
 
-ss = ss.dropna()
-
 # Define the new column names and order
 new_columns = {'income1': 'income', 'par1': 'parent', 'marital1': 'married', 'age1': 'age'}
 new_order = ['income', 'education', 'parent', 'married', 'female','age', 'sm_li']
@@ -144,7 +142,7 @@ ss.rename(columns=new_columns, inplace=True)
 
 # Reorder columns and create dataframe 'ss'
 ss = ss[new_order]
-
+ss = ss.dropna()
 # Create target vector (y) and feature set (x)
 y = ss["sm_li"]
 x = ss.drop("sm_li", axis=1)
