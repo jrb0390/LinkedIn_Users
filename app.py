@@ -115,7 +115,9 @@ input_data = pd.DataFrame({
 s = pd.read_csv("social_media_usage.csv")
 st.write(s['web1h'])
 def clean_sm(x):
+    print("Before cleaning:", x)
     x = np.where(x == 1, 1, 0)
+    print("After cleaning:", x)
     return x
 
 s["income"] = pd.to_numeric(s["income"], errors='coerce')
