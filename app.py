@@ -117,7 +117,12 @@ s = pd.read_csv("social_media_usage.csv")
 def clean_sm(x):
     x = np.where(x == 1, 1, 0)
     return x
-  
+
+# Cast object data type to int
+s["income"].astype(int)
+s["educ2"].astype(int)
+s['age'] = pd.to_numeric(ss['age'], errors='coerce')
+
 ss = pd.DataFrame({
     "sm_li": clean_sm(s['web1h']),
     "income1": np.where(s['income'] > 9, np.nan, s['income']),
@@ -138,11 +143,6 @@ ss.rename(columns=new_columns, inplace=True)
 # Reorder columns and create dataframe 'ss'
 ss = ss[new_order]
 ss = ss.dropna()
-
-# Cast object data type to int
-ss["income"].astype(int)
-ss["education"].astype(int)
-ss['age'] = pd.to_numeric(ss['age'], errors='coerce')
 
 # Create target vector (y) and feature set (x)
 y = ss["sm_li"]
