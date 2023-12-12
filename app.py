@@ -123,7 +123,6 @@ s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
 s['age'] = pd.to_numeric(s['age'], errors='coerce')
 
 ss = pd.DataFrame({
-    "sm_li": clean_sm(s['web1h']),
     "income1": np.where(s['income'] > 9, np.nan, s['income']),
     "education": np.where(s['educ2'] > 8, np.nan, s['educ2']),
     "par1": clean_sm(s['par']),
@@ -131,6 +130,8 @@ ss = pd.DataFrame({
     "female": np.where(s['sex'] == 1, 0, 1),
     "age1": np.where(s['age'] > 98, np.nan, s['age'])
 })
+
+ss['sm_li'] = clean_sm(s['web1h'])
 
 st.write(ss)
 # Define the new column names and order
