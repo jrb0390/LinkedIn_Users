@@ -113,18 +113,18 @@ input_data = pd.DataFrame({
 
 # Read in CSV file
 s = pd.read_csv("social_media_usage.csv")
-st.write(s['web1h'])
+
 def clean_sm(x):
-    print("Before cleaning:", x)
     x = np.where(x == 1, 1, 0)
-    print("After cleaning:", x)
     return x
+  
 s['web1h'] = pd.to_numeric(s['web1h'], errors='coerce')
 s["income"] = pd.to_numeric(s["income"], errors='coerce')
 s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
 s['age'] = pd.to_numeric(s['age'], errors='coerce')
 
 ss = pd.DataFrame({
+    "sm_li": clean_sm(s['web1h']),
     "income1": np.where(s['income'] > 9, np.nan, s['income']),
     "education": np.where(s['educ2'] > 8, np.nan, s['educ2']),
     "par1": clean_sm(s['par']),
@@ -133,9 +133,6 @@ ss = pd.DataFrame({
     "age1": np.where(s['age'] > 98, np.nan, s['age'])
 })
 
-ss['sm_li'] = clean_sm(s['web1h'])
-
-st.write(ss)
 # Define the new column names and order
 new_columns = {'income1': 'income', 'par1': 'parent', 'marital1': 'married', 'age1': 'age'}
 new_order = ['income', 'education', 'parent', 'married', 'female','age', 'sm_li']
@@ -150,7 +147,7 @@ ss = ss.dropna()
 # Create target vector (y) and feature set (x)
 y = ss["sm_li"]
 X = ss.drop("sm_li", axis=1)
-st.write(y)
+
 # Split training and testing data withholding 20% for testing
 x_train, x_test, y_train, y_test = train_test_split(x,
                                                     y,
