@@ -119,8 +119,8 @@ def clean_sm(x):
     return x
 
 # Cast object data type to int
-s["income"] = s["income"].astype(int)
-s["educ2"] = s["educ2"].astype(int)
+s["income"] = pd.to_numeric(s["income"], errors='coerce')
+s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
 s['age'] = pd.to_numeric(s['age'], errors='coerce')
 
 ss = pd.DataFrame({
