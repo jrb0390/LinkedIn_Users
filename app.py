@@ -161,6 +161,8 @@ y_pred = lr.predict(x_test)
 # Model run
 input_data['sm_li'] = lr.predict(input_data) 
 
+print(input_data)
+
 
 
 
