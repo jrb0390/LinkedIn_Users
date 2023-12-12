@@ -97,17 +97,17 @@ if sex == "Male":
 else:
     sex = 1
 
-age = st.number_input("Enter Age", value=0, max=97)
+age = st.number_input("Enter Age (max of 97)", value=0)
 
 
 ## To dataframe
 input_data = pd.DataFrame({
-    'income': income,
-    'education': education,
-    'parent': parent,
-    'married':marital_status,
-    'female':sex,
-    'age': age
+    'income': [income],
+    'education': [education],
+    'parent': [parent],
+    'married': [marital_status],
+    'female': [sex],
+    'age': [age]
 })
 
 
