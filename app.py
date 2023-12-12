@@ -167,12 +167,9 @@ y_pred = lr.predict(x_test)
 
 if st.button("Submit"):
     if education:
-        # Convert user input to a NumPy array (adjust as needed based on your input format)
-        user_input_array = np.array([float(x) for x in user_input.split(',')]).reshape(1, -1)
-
         # Make predictions
-        prediction = lr.predict(user_input_array)
-        probabilities = lr.predict_proba(user_input_array)
+        prediction = lr.predict(input_data)
+        probabilities = lr.predict_proba(input_data)
 
         # Display results
         st.write("Predicted Class:", prediction)
