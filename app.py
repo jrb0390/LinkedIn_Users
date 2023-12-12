@@ -178,7 +178,7 @@ if st.button("Submit"):
             results = lr.predict(input_data) 
 
             # Display the model output
-            probabilities = model.predict_proba(results)
+            probabilities = lr.predict_proba(results)
             st.success(f"Model Probability: {probabilities:.2%}")
         else:
             st.warning("Please enter input data.")
