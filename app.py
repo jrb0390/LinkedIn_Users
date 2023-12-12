@@ -10,87 +10,94 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 st.header("LinkedIn User Prediction Model")
 st.write("Jeremy Brown")
 
-# Household Income input & options
-income = st.text_input("**What is your household income? (1-9) see below:**", key="household_income")
-income_options = {
-    "1": "Less than $10,000",
-    "2": "10 to under $20,000",
-    "3": "20 to under $30,000",
-    "4": "30 to under $40,000",
-    "5": "40 to under $50,000",
-    "6": "50 to under $75,000",
-    "7": "75 to under $100,000",
-    "8": "100 to under $150,000",
-    "9": "$150,000 or more",
-}
-st.write("<small>Income Options:</small>", unsafe_allow_html=True)
-for code, label in income_options.items():
-    st.write(f"<small>{code}-{label}</small>", unsafe_allow_html=True)
+income = st.selectbox("What is your household income?", 
+                      options= ["Less than $10,000",
+                                "10 to under $20,000",
+                                "20 to under $30,000",
+                                "30 to under $40,000",
+                                "40 to under $50,000",
+                                "50 to under $75,000",
+                                "75 to under $100,000",
+                                "100 to under $150,000",
+                                "$150,000 or more",])
+if income == "Less than $10,000":
+    income = 1
+elif income == "10 to under $20,000":
+    income = 2
+elif income == "20 to under $30,000":
+    income = 3
+elif income == "30 to under $40,000":
+    income = 4
+elif income == "40 to under $50,000":
+    income = 5
+elif income == "50 to under $75,000":
+    income = 6
+elif income == "75 to under $100,000":
+    income = 7
+elif income == "100 to under $150,000":
+    income = 8
+elif income == "$150,000 or more":
+    income = 9
 
-# Education input & options
-education = st.text_input("**What is the highest level of school/degree completed? (1-8) see below:**", key="education_input")
-education_options = {
-    "1": "Less than high school (Grades 1-8 or no formal schooling)",
-    "2": "High school incomplete (Grades 9-11 or Grade 12 with NO diploma)",
-    "3": "High school graduate (Grade 12 with diploma or GED certificate)",
-    "4": "Some college, no degree (includes some community college)",
-    "5": "Two-year associate degree from a college or university",
-    "6": "Four-year college or university degree/Bachelor’s degree (e.g., BS, BA, AB)",
-    "7": "Some postgraduate or professional schooling, no postgraduate degree (e.g. some graduate school)",
-    "8": "Postgraduate or professional degree, including master’s, doctorate, medical or law degree (e.g., MA, MS, PhD, MD, JD)",
-}
-st.write("<small>Education Options:<\small>", unsafe_allow_html=True)
-for code, label in education_options.items():
-    st.write(f"<small>{code}-{label}</small>", unsafe_allow_html=True)
+education = st.selectbox("What is your education level?", 
+                         options= ["Less than high school (Grades 1-8 or no formal schooling)",
+                                    "High school incomplete (Grades 9-11 or Grade 12 with NO diploma)",
+                                    "High school graduate (Grade 12 with diploma or GED certificate)",
+                                    "Some college, no degree (includes some community college)",
+                                    "Two-year associate degree from a college or university",
+                                    "Four-year college or university degree/Bachelor’s degree (e.g., BS, BA, AB)",
+                                    "Some postgraduate or professional schooling, no postgraduate degree (e.g. some graduate school)",
+                                    "Postgraduate or professional degree, including master’s, doctorate, medical or law degree (e.g., MA, MS, PhD, MD, JD)",])
+if education == "Less than high school (Grades 1-8 or no formal schooling)":
+    education = 1
+elif education == "High school incomplete (Grades 9-11 or Grade 12 with NO diploma)":
+    education = 2
+elif education == "High school graduate (Grade 12 with diploma or GED certificate)":
+    education = 3
+elif education == "Some college, no degree (includes some community college)":
+    education = 4
+elif education == "Two-year associate degree from a college or university":
+    education = 5
+elif education == "Four-year college or university degree/Bachelor’s degree (e.g., BS, BA, AB)":
+    education = 6
+elif education == "Some postgraduate or professional schooling, no postgraduate degree (e.g. some graduate school)":
+    education = 7
+elif education == "Postgraduate or professional degree, including master’s, doctorate, medical or law degree (e.g., MA, MS, PhD, MD, JD)":
+    education = 8
 
-# Parent input & options
-parent = st. text_input("**Are you a parent of a child under 18 living in your home? (1, 2, 98, or 99) see below:**", key="parent_input")
-yes_no_options = {
-    "1": "Yes",
-    "2": "No",
-    "98": "Don't Know",
-    "99": "Refused",
-}
-st.write("<small>Yes/No Options:</small>", unsafe_allow_html=True)
-for code, label in yes_no_options.items():
-    st.write(f"<small>{code}-{label}</small>", unsafe_allow_html=True)
+parent = st.radio("Are you a parent of a child under 18 living in your home? ", ["Yes", "No"])
+if parent == "Yes":
+    parent = 1
+else:
+    parent = 2
 
-# Marital status input & options
-marital_status = st. text_input("**Current marital status (1-6, or 8, 9) see below:**", key="marital_input")
-marital_status_options = {
-    "1": "Married",
-    "2": "Living with a partner",
-    "3": "Divorced",
-    "4": "Separated",
-    "5": "Widowed",
-    "6": "Never been married",
-    "8": "Don't Know",
-    "9": "Refused",
-}
-st.write("<small>Marital Status Options:</small>", unsafe_allow_html=True)
-for code, label in marital_status_options.items():
-    st.write(f"<small>{code}-{label}</small>", unsafe_allow_html=True)
+marital_status = st.selectbox("Select Marital Status", 
+                              options= ["Married",
+                                        "Living with a partner",
+                                        "Divorced",
+                                        "Separated",
+                                        "Widowed",
+                                        "Never been married",])
+if marital_status == "Married":
+    marital_status = 1
+elif marital_status == "Living with a partner":
+    marital_status = 2
+elif marital_status == "Divorced":
+    marital_status = 3
+elif marital_status == "Separated":
+    marital_status = 4
+elif marital_status == "Widowed":
+    marital_status = 5
+elif marital_status == "Never been married":
+    marital_status = 6
 
-# Sex input & options
-sex = st.text_input("**What is your sex? (1, 2, 98, or 99):**", key="sex_input")
-gender_options = {
-    "1": "Male",
-    "2": "Female",
-    "98": "Don't Know",
-    "99": "Refused",
-}
-st.write("<small>Gender Options:</small>", unsafe_allow_html=True)
-for code, label in gender_options.items():
-    st.write(f"<small>{code}-{label}</small>", unsafe_allow_html=True)
+sex = st.radio("Select Gender", ["Male", "Female"])
+if sex == "Male":
+    sex = 0
+else:
+    sex = 1
 
-# Age input & options
-age = st.text_input("**What is your age? (enter a number between 0 - 96, or max 97):**", key="age_input")
-age_options = {
-    "97": "97+",
-}
-st.write("<small>Age Options:</small>", unsafe_allow_html=True)
-for code, label in age_options.items():
-    st.write(f"<small>{code}-{label}</small>", unsafe_allow_html=True)
+age = st.number_input("Enter Age", value=0, max=97)
 
 
 ## To dataframe
