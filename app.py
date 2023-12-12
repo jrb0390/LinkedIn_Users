@@ -119,9 +119,9 @@ def clean_sm(x):
     return x
 
 # Cast object data type to int
-s["income"].astype(int)
-s["educ2"].astype(int)
-s['age'] = pd.to_numeric(ss['age'], errors='coerce')
+s["income"] = s["income"].astype(int)
+s["educ2"] = s["educ2"].astype(int)
+s['age'] = pd.to_numeric(s['age'], errors='coerce')
 
 ss = pd.DataFrame({
     "sm_li": clean_sm(s['web1h']),
