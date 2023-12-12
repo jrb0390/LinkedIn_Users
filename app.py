@@ -143,6 +143,7 @@ ss.rename(columns=new_columns, inplace=True)
 # Reorder columns and create dataframe 'ss'
 ss = ss[new_order]
 ss = ss.dropna()
+
 # Create target vector (y) and feature set (x)
 y = ss["sm_li"]
 X = ss.drop("sm_li", axis=1)
