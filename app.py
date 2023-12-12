@@ -146,7 +146,7 @@ ss = ss.dropna()
 
 # Create target vector (y) and feature set (x)
 y = ss["sm_li"]
-X = ss.drop("sm_li", axis=1)
+x = ss.drop("sm_li", axis=1)
 
 # Split training and testing data withholding 20% for testing
 x_train, x_test, y_train, y_test = train_test_split(x,
