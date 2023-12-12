@@ -164,17 +164,22 @@ lr.fit(x_train, y_train)
 # Using model to make predictions
 y_pred = lr.predict(x_test)
 
-# Model run
-input_data['sm_li'] = lr.predict(input_data) 
+
+# Display the accuracy score in Streamlit
+
+
+# Model run 
+
 
 if st.button("Submit"):
         # When the button is clicked, execute the following code
         if True:
             # Call the model prediction function
-            input_data['sm_li'] = lr.predict(input_data) 
+            results = lr.predict(input_data) 
 
             # Display the model output
-            st.success(accuracy = accuracy_score(y_test, y_pred))
+            probabilities = model.predict_proba(results)
+            st.success(f"Model Probability: {probabilities:.2%}")
         else:
             st.warning("Please enter input data.")
 
