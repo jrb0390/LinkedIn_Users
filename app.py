@@ -156,6 +156,11 @@ x_train, x_test, y_train, y_test = train_test_split(x,
                                                     test_size=.2,
                                                     random_state=216
                                                 )
+st.write("x_train shape:", x_train.shape)
+st.write("y_train shape:", y_train.shape)
+st.write("x_train data types:", x_train.dtypes)
+st.write("y_train data types:", y_train.dtypes)
+
 
 # Instantiate a logistic regression model and set class_weight to balanced. Fit the model with the training data
 lr = LogisticRegression(class_weight='balanced')
