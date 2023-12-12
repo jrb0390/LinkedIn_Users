@@ -132,7 +132,7 @@ ss = pd.DataFrame({
     "age1": np.where(s['age'] > 98, np.nan, s['age'])
 })
 
-st.write(ss.dtypes)
+st.write(ss)
 # Define the new column names and order
 new_columns = {'income1': 'income', 'par1': 'parent', 'marital1': 'married', 'age1': 'age'}
 new_order = ['income', 'education', 'parent', 'married', 'female','age', 'sm_li']
