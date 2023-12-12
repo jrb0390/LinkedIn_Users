@@ -165,23 +165,21 @@ lr.fit(x_train, y_train)
 y_pred = lr.predict(x_test)
 
 
-# Display the accuracy score in Streamlit
-
-
-# Model run 
-
-
 if st.button("Submit"):
-        # When the button is clicked, execute the following code
-        if True:
-            # Call the model prediction function
-            results = lr.predict(input_data) 
+    if education:
+        # Convert user input to a NumPy array (adjust as needed based on your input format)
+        user_input_array = np.array([float(x) for x in user_input.split(',')]).reshape(1, -1)
 
-            # Display the model output
-            probabilities = lr.predict_proba(results)
-            st.success(f"Model Probability: {probabilities:.2%}")
-        else:
-            st.warning("Please enter input data.")
+        # Make predictions
+        prediction = lr.predict(user_input_array)
+        probabilities = lr.predict_proba(user_input_array)
+
+        # Display results
+        st.write("Predicted Class:", prediction)
+        st.write("Predicted Probabilities:", probabilities)
+
+    else:
+        st.warning("Please enter input data.")
 
 
 
