@@ -115,7 +115,7 @@ input_data = pd.DataFrame({
 s = pd.read_csv("social_media_usage.csv")
 # Read in CSV file
 
-st.write(s['web1h'])
+st.write(s.columns)
 
 def clean_sm(x):
     x = np.where(x == 1, 1, 0)
