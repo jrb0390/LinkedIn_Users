@@ -118,6 +118,10 @@ def clean_sm(x):
     x = np.where(x == 1, 1, 0)
     return x
 
+s["income"] = pd.to_numeric(s["income"], errors='coerce')
+s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
+s['age'] = pd.to_numeric(s['age'], errors='coerce')
+
 ss = pd.DataFrame({
     "sm_li": clean_sm(s['web1h']),
     "income1": np.where(s['income'] > 9, np.nan, s['income']),
@@ -128,11 +132,7 @@ ss = pd.DataFrame({
     "age1": np.where(s['age'] > 98, np.nan, s['age'])
 })
 
-s["income"] = pd.to_numeric(s["income"], errors='coerce')
-s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
-s['age'] = pd.to_numeric(s['age'], errors='coerce')
-
-st.write(ss['sm_li'])
+st.write(ss.dtypes)
 # Define the new column names and order
 new_columns = {'income1': 'income', 'par1': 'parent', 'marital1': 'married', 'age1': 'age'}
 new_order = ['income', 'education', 'parent', 'married', 'female','age', 'sm_li']
