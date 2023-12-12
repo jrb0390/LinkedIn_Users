@@ -105,18 +105,26 @@ input_data = pd.DataFrame({
 
 
 # Read in CSV file
-s = pd.read_csv("social_media_usage.csv")
 
-def user_prediction(dataframe, input_data):
+
+def user_prediction(input_data):
+    import pandas as pd
+    import numpy as np
+    import seaborn as sns
+    from sklearn.model_selection import train_test_split
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+    s = pd.read_csv("social_media_usage.csv")
     # Create 'ss' dataframe with specified features
     ss = pd.DataFrame({
-        "sm_li": clean_sm(dataframe['web1h']),
-        "income1": np.where(dataframe['income'] > 9, np.nan, dataframe['income']),
-        "education": np.where(dataframe['educ2'] > 8, np.nan, dataframe['educ2']),
-        "par1": clean_sm(dataframe['par']),
-        "marital1": clean_sm(dataframe['marital']),
-        "female": np.where(dataframe['sex'] == 1, 0, 1),
-        "age1": np.where(dataframe['age'] > 98, np.nan, dataframe['age'])
+        "sm_li": clean_sm(s['web1h']),
+        "income1": np.where(s['income'] > 9, np.nan, s['income']),
+        "education": np.where(s['educ2'] > 8, np.nan, s['educ2']),
+        "par1": clean_sm(s['par']),
+        "marital1": clean_sm(s['marital']),
+        "female": np.where(s['sex'] == 1, 0, 1),
+        "age1": np.where(s['age'] > 98, np.nan, s['age'])
     })
 
     # Define the new column names and order
