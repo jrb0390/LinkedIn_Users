@@ -133,6 +133,12 @@ ss = pd.DataFrame({
     "age1": np.where(s['age'] > 98, np.nan, s['age'])
 })
 st.write(ss['sm_li'])
+
+s["income"] = pd.to_numeric(s["income"], errors='coerce')
+s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
+s['age'] = pd.to_numeric(s['age'], errors='coerce')
+
+st.write(ss['sm_li'])
 # Define the new column names and order
 new_columns = {'income1': 'income', 'par1': 'parent', 'marital1': 'married', 'age1': 'age'}
 new_order = ['income', 'education', 'parent', 'married', 'female','age', 'sm_li']
