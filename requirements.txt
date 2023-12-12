@@ -1,8 +1,0 @@
-pandas
-numpy
-seaborn
-train_test_split
-LogisticRegression
-accuracy_score
-classification_report
-confusion_matrix
