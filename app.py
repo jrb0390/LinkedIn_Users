@@ -113,15 +113,10 @@ input_data = pd.DataFrame({
 
 # Read in CSV file
 s = pd.read_csv("social_media_usage.csv")
-
+st.write(s['web1h'])
 def clean_sm(x):
     x = np.where(x == 1, 1, 0)
     return x
-
-# Cast object data type to int
-s["income"] = pd.to_numeric(s["income"], errors='coerce')
-s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
-s['age'] = pd.to_numeric(s['age'], errors='coerce')
 
 ss = pd.DataFrame({
     "sm_li": clean_sm(s['web1h']),
@@ -132,7 +127,6 @@ ss = pd.DataFrame({
     "female": np.where(s['sex'] == 1, 0, 1),
     "age1": np.where(s['age'] > 98, np.nan, s['age'])
 })
-st.write(ss['sm_li'])
 
 s["income"] = pd.to_numeric(s["income"], errors='coerce')
 s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
