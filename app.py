@@ -169,7 +169,7 @@ input_data['sm_li'] = lr.predict(input_data)
 
 if st.button("Submit"):
         # When the button is clicked, execute the following code
-        if input_data:
+        if True:
             # Call the model prediction function
             input_data['sm_li'] = lr.predict(input_data) 
 
