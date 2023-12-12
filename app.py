@@ -106,7 +106,7 @@ input_data = pd.DataFrame({
 
 
 # Read in CSV file
-s = pd.read_csv("C:\\Users\\jerem\\Documents\\Linkedin Users Project\\social_media_usage.csv")
+s = pd.read_csv("social_media_usage.csv")
 
 def user_prediction(dataframe, input_data):
     # Create 'ss' dataframe with specified features
