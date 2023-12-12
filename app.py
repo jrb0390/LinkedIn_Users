@@ -119,7 +119,7 @@ def clean_sm(x):
     x = np.where(x == 1, 1, 0)
     print("After cleaning:", x)
     return x
-
+s['web1h'] = pd.to_numeric(s['web1h'], errors='coerce')
 s["income"] = pd.to_numeric(s["income"], errors='coerce')
 s["educ2"] = pd.to_numeric(s["educ2"], errors='coerce')
 s['age'] = pd.to_numeric(s['age'], errors='coerce')
